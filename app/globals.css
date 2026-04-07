@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────
+   lipshaw.digital — Design Tokens
+   Nature-inspired palette: Newbold Comyn morning
+   ───────────────────────────────────────────── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Homepage — full landscape */
+  --river: #3b6b8a;
+  --sky: #7ba7c2;
+  --hill: #5a7c5a;
+  --grass: #6b8f5e;
+  --earth: #4a3f35;
+  --mist: #e8ede5;
+  --cloud: #f4f6f2;
+
+  /* Newbold — deep forest */
+  --newbold-bg: #1a2e1a;
+  --newbold-surface: #243524;
+  --newbold-accent: #5a7c5a;
+  --newbold-text: #d4ddd0;
+  --newbold-muted: #8a9a85;
+
+  /* LD Apps — morning clearing */
+  --apps-bg: #f4f6f2;
+  --apps-surface: #ffffff;
+  --apps-accent: #3b6b8a;
+  --apps-text: #2a332a;
+  --apps-muted: #6b7b6b;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-river: var(--river);
+  --color-sky: var(--sky);
+  --color-hill: var(--hill);
+  --color-grass: var(--grass);
+  --color-earth: var(--earth);
+  --color-mist: var(--mist);
+  --color-cloud: var(--cloud);
+
+  --color-newbold-bg: var(--newbold-bg);
+  --color-newbold-surface: var(--newbold-surface);
+  --color-newbold-accent: var(--newbold-accent);
+  --color-newbold-text: var(--newbold-text);
+  --color-newbold-muted: var(--newbold-muted);
+
+  --color-apps-bg: var(--apps-bg);
+  --color-apps-surface: var(--apps-surface);
+  --color-apps-accent: var(--apps-accent);
+  --color-apps-text: var(--apps-text);
+  --color-apps-muted: var(--apps-muted);
+
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cloud);
+  color: var(--earth);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--river);
+  color: var(--cloud);
+}
+
+/* Subtle grain texture utility — inline SVG, no asset */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

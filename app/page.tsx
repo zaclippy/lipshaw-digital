@@ -1,65 +1,142 @@
-import Image from "next/image";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Card from "@/components/Card";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      <Header
+        variant="home"
+        brand={{ label: "LD" }}
+        links={[
+          { href: "/apps", label: "Apps" },
+          { href: "/newbold", label: "Newbold" },
+        ]}
+      />
+
+      <main>
+        {/* ───────────────────────── Hero ───────────────────────── */}
+        <section
+          className="relative grain min-h-dvh flex items-center justify-center overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, #7BA7C2 0%, #6B8F5E 55%, #4A3F35 100%)",
+          }}
+        >
+          {/* Soft horizon glow */}
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-1/2 h-64 -translate-y-1/2"
+            style={{
+              background:
+                "radial-gradient(60% 60% at 50% 50%, rgba(244,246,242,0.18), transparent 70%)",
+            }}
+          />
+
+          <div className="relative z-10 text-center px-6">
+            <h1
+              className="font-display font-bold text-cloud leading-none tracking-tight"
+              style={{ fontSize: "clamp(80px, 14vw, 160px)" }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              LD
+            </h1>
+            <p className="mt-6 font-body text-cloud/80 text-sm md:text-base tracking-[0.3em] uppercase">
+              Lipshaw Digital
+            </p>
+          </div>
+
+          {/* Scroll cue */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-cloud/60">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="animate-[bounce_2.4s_ease-in-out_infinite]"
+              aria-hidden
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </div>
+        </section>
+
+        {/* ──────────────────── Three cards ──────────────────── */}
+        <section className="bg-earth py-24 md:py-32">
+          <div className="mx-auto max-w-[1200px] px-6 md:px-10">
+            <ScrollReveal>
+              <p className="font-body text-cloud/50 text-xs tracking-[0.25em] uppercase mb-3">
+                Three arms
+              </p>
+              <h2 className="font-display text-cloud text-3xl md:text-4xl max-w-xl">
+                One company. Three things we do well.
+              </h2>
+            </ScrollReveal>
+
+            <div className="mt-14 grid gap-6 md:grid-cols-3 md:gap-8">
+              <ScrollReveal delay={0.05}>
+                <Card href="/apps" accent="#3B6B8A">
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-display font-bold text-3xl text-cloud">
+                      LD
+                    </span>
+                    <span className="font-display text-xl text-cloud/70">
+                      Apps
+                    </span>
+                  </div>
+                  <p className="mt-10 text-cloud/70 text-sm">
+                    Consumer apps &amp; products
+                  </p>
+                  <p className="mt-1 text-cloud/40 text-xs">
+                    GeoHunter and more →
+                  </p>
+                </Card>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.12}>
+                <Card href="/newbold" accent="#5A7C5A">
+                  <div>
+                    <div className="font-display font-bold text-3xl text-cloud">
+                      Newbold
+                    </div>
+                    <div className="text-cloud/60 text-xs mt-1 tracking-wide">
+                      Website Development
+                    </div>
+                  </div>
+                  <p className="mt-9 text-cloud/70 text-sm">
+                    Websites for small businesses
+                  </p>
+                  <p className="mt-1 text-cloud/40 text-xs">See our work →</p>
+                </Card>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.19}>
+                <Card
+                  href="https://zaclippy.github.io"
+                  external
+                  accent="#A07A4F"
+                >
+                  <div className="font-display font-bold text-3xl text-cloud">
+                    Zac
+                  </div>
+                  <p className="mt-10 text-cloud/70 text-sm">
+                    Personal portfolio
+                  </p>
+                  <p className="mt-1 text-cloud/40 text-xs">
+                    External site ↗
+                  </p>
+                </Card>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
       </main>
-    </div>
+
+      <Footer variant="dark" />
+    </>
   );
 }
