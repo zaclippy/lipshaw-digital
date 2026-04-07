@@ -75,7 +75,10 @@ type IconLinkProps = {
   href: string;
   external?: boolean;
   accent: string;
+  /** Verbose label for screen readers / aria-label */
   label: string;
+  /** Short visible caption that fades in on hover */
+  caption: string;
   children: React.ReactNode;
 };
 
@@ -84,6 +87,7 @@ function IconLink({
   external,
   accent,
   label,
+  caption,
   children,
 }: IconLinkProps) {
   const className =
@@ -100,6 +104,15 @@ function IconLink({
         }}
       />
       <span className="relative">{children}</span>
+
+      {/* Hover caption — small letterspaced label below the icon */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-full mt-3 -translate-x-1/2 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 transition-all duration-300 ease-out font-body text-[10px] md:text-xs uppercase tracking-[0.25em] text-cloud/85 whitespace-nowrap"
+      >
+        {caption}
+      </span>
+
       <span className="sr-only">{label}</span>
     </>
   );
@@ -173,10 +186,20 @@ export default function Home() {
             aria-label="Primary"
             className="mt-14 md:mt-20 flex items-center justify-center gap-6 md:gap-12"
           >
-            <IconLink href="/apps" accent="#3B6B8A" label="LD Apps">
+            <IconLink
+              href="/apps"
+              accent="#3B6B8A"
+              label="LD Apps"
+              caption="Apps"
+            >
               <PhoneIcon />
             </IconLink>
-            <IconLink href="/newbold" accent="#5A7C5A" label="Websites by Newbold">
+            <IconLink
+              href="/newbold"
+              accent="#5A7C5A"
+              label="Websites by Newbold"
+              caption="Websites"
+            >
               <DesktopIcon />
             </IconLink>
             <IconLink
@@ -184,6 +207,7 @@ export default function Home() {
               external
               accent="#A07A4F"
               label="Zac — personal site"
+              caption="Zac"
             >
               <PersonIcon />
             </IconLink>
