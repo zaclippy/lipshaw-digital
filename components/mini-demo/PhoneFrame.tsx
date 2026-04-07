@@ -1,20 +1,39 @@
 "use client"
 
-import type { ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 
 interface PhoneFrameProps {
   children: ReactNode
 }
 
+function useLiveTime() {
+  const [time, setTime] = useState<string | null>(null)
+  useEffect(() => {
+    const fmt = () => {
+      const d = new Date()
+      let h = d.getHours()
+      const m = d.getMinutes()
+      h = h % 12
+      if (h === 0) h = 12
+      return `${h}:${m.toString().padStart(2, '0')}`
+    }
+    setTime(fmt())
+    const id = setInterval(() => setTime(fmt()), 10_000)
+    return () => clearInterval(id)
+  }, [])
+  return time
+}
+
 // iOS-style frame. Inner screen background matches the real GeoHunter Classic
 // mode flat lavender purple from the live app screenshot.
 export function PhoneFrame({ children }: PhoneFrameProps) {
+  const time = useLiveTime()
   return (
     <div className="ghmd-phone">
       <div className="ghmd-phone-bezel">
         <div className="ghmd-phone-screen">
           <div className="ghmd-status-bar">
-            <span className="time">9:41</span>
+            <span className="time" suppressHydrationWarning>{time ?? '9:41'}</span>
             <div className="notch" />
             <div className="icons">
               <span className="signal">●●●</span>

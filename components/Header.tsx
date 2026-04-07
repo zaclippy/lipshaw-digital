@@ -19,6 +19,7 @@ const palettes: Record<
     bgScrolled: string;
     bgInitial: string;
     border: string;
+    logoFilter: string;
   }
 > = {
   home: {
@@ -27,6 +28,7 @@ const palettes: Record<
     bgInitial: "bg-transparent",
     bgScrolled: "bg-earth/80 backdrop-blur-md",
     border: "border-cloud/10",
+    logoFilter: "brightness(0) invert(1)",
   },
   light: {
     text: "text-apps-text",
@@ -34,6 +36,7 @@ const palettes: Record<
     bgInitial: "bg-apps-bg/80 backdrop-blur",
     bgScrolled: "bg-apps-bg/95 backdrop-blur-md",
     border: "border-apps-text/10",
+    logoFilter: "brightness(0)",
   },
   dark: {
     text: "text-newbold-text",
@@ -41,6 +44,7 @@ const palettes: Record<
     bgInitial: "bg-newbold-bg/80 backdrop-blur",
     bgScrolled: "bg-newbold-bg/95 backdrop-blur-md",
     border: "border-newbold-text/10",
+    logoFilter: "brightness(0) invert(1)",
   },
 };
 
@@ -70,11 +74,21 @@ export default function Header({
       <div className="mx-auto max-w-[1200px] px-6 md:px-10 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className={`font-display font-bold tracking-tight text-lg md:text-xl ${p.text}`}
+          aria-label="Lipshaw Digital"
+          className={`inline-flex items-center gap-2 font-display font-bold tracking-tight text-lg md:text-xl ${p.text}`}
         >
-          {brand.label}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="Lipshaw Digital"
+            className="h-8 md:h-9 w-auto select-none"
+            style={{ filter: p.logoFilter }}
+          />
+          {brand.label && brand.label !== "LD" && (
+            <span className="ml-1">{brand.label}</span>
+          )}
           {brand.sub && (
-            <span className={`ml-2 font-body font-normal text-xs ${p.muted}`}>
+            <span className={`font-body font-normal text-xs ${p.muted}`}>
               {brand.sub}
             </span>
           )}

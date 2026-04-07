@@ -8,7 +8,8 @@ export function StartScreen() {
   const startGame = useDemoStore(s => s.startGame)
   return (
     <div className="ghmd-start">
-      <div className="logo">🌍</div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="logo" src="/geohunter-logo.webp" alt="GeoHunter" />
       <h1 className="title">GeoHunter</h1>
       <div className="badge">CLASSIC · EASY MODE</div>
       <p className="tagline">Pick the right category for each country.<br/>Lower score wins.</p>
@@ -32,9 +33,10 @@ export function StartScreen() {
           gap:10px;
         }
         .logo {
-          font-size:72px;
-          line-height:1;
-          filter:drop-shadow(0 6px 14px rgba(0,0,0,0.3));
+          width:96px;
+          height:96px;
+          object-fit:contain;
+          filter:drop-shadow(0 6px 14px rgba(0,0,0,0.35));
         }
         .title {
           font-size:38px;

@@ -68,7 +68,7 @@ export function GameScreen() {
         {/* Logo square (left) */}
         <div className="g-logo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/geohunter-logo.png" alt="GeoHunter" className="g-logo-img" />
+          <img src="/geohunter-logo.webp" alt="GeoHunter" className="g-logo-img" />
         </div>
 
         {/* Score + performance pill (center, flex-1) */}
