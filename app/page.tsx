@@ -197,16 +197,15 @@ export default function Home() {
             <IconLink
               href="/newbold"
               accent="#5A7C5A"
-              label="Websites by Newbold"
+              label="Newbold Web Studio"
               caption="Websites"
             >
               <DesktopIcon />
             </IconLink>
             <IconLink
-              href="https://zaclippy.github.io"
-              external
+              href="/zac"
               accent="#A07A4F"
-              label="Zac — personal site"
+              label="Zac — about"
               caption="Zac"
             >
               <PersonIcon />

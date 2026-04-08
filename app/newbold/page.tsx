@@ -38,7 +38,7 @@ export default function NewboldPage() {
     <div className="bg-newbold-bg text-newbold-text min-h-dvh">
       <Header
         variant="dark"
-        brand={{ label: "Newbold", sub: "Website Development" }}
+        brand={{ label: "Newbold Web Studio" }}
         links={[
           { href: "/", label: "Home" },
           { href: "/apps", label: "Apps" },
@@ -50,7 +50,7 @@ export default function NewboldPage() {
         <section className="mx-auto max-w-[1200px] px-6 md:px-10 pt-20 md:pt-32 pb-16 md:pb-24">
           <ScrollReveal>
             <p className="text-newbold-muted text-xs tracking-[0.25em] uppercase mb-4">
-              Newbold · Website Development
+              Newbold Web Studio
             </p>
             <h1 className="font-display font-bold text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl">
               A website that works for your business.
@@ -126,7 +126,7 @@ export default function NewboldPage() {
             </h2>
           </ScrollReveal>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
+          <div className="mt-12 grid gap-px bg-newbold-text/10 md:grid-cols-2 rounded-2xl overflow-hidden">
             {portfolio.map((p, i) => (
               <ScrollReveal key={p.url} delay={0.05 * i}>
                 <SitePreview url={p.url} label={p.label} year={p.year} />
