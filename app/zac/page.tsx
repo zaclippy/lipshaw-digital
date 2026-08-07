@@ -4,9 +4,17 @@ import Footer from "@/components/Footer";
 import ProfileSections from "@/components/zac/ProfileSections";
 
 export const metadata: Metadata = {
-  title: "Zac Lipshaw — Lipshaw Digital",
+  title: "Zac Lipshaw",
   description:
-    "Full Stack Developer · BSc Computer Science. I build web/mobile apps, work with AI/LLMs, and create digital twin extensions.",
+    "Zac Lipshaw — Full Stack Developer, BSc Computer Science. Founder of LD Ltd, creator of GeoHunter (100k+ downloads), and NVIDIA Omniverse / digital-twin developer at JLR (showcased at NVIDIA GTC 2025).",
+  openGraph: {
+    title: "Zac Lipshaw · Lipshaw Digital",
+    description:
+      "Founder of LD Ltd, creator of GeoHunter, and NVIDIA Omniverse digital-twin developer at JLR (NVIDIA GTC 2025).",
+    url: "https://ldapps.site/zac",
+    type: "profile",
+    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "Zac Lipshaw" }],
+  },
 };
 
 export default function ZacPage() {

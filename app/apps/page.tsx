@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import PromptModal from "@/components/PromptModal";
+import EmailCapture from "@/components/EmailCapture";
 import { GeoHunterMiniDemo } from "@/components/mini-demo";
 
 export default function AppsPage() {
@@ -32,7 +33,7 @@ export default function AppsPage() {
               Apps built for real people.
             </h1>
             <p className="mt-6 max-w-xl text-apps-muted text-base md:text-lg">
-              Consumer products, made by a small team in the UK.
+              Consumer products, designed and built in the UK.
             </p>
             <div className="mt-10">
               <button
@@ -81,26 +82,38 @@ export default function AppsPage() {
                   Geography quiz game.
                 </p>
 
-                <dl className="mt-8 grid grid-cols-2 gap-6 max-w-sm">
+                <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-7 max-w-sm">
                   <div>
                     <dt className="text-apps-muted text-xs uppercase tracking-wider">
-                      Players
+                      Downloads
                     </dt>
-                    <dd className="font-display text-2xl mt-1">60,000+</dd>
+                    <dd className="font-display text-2xl mt-1">100k+</dd>
                   </div>
                   <div>
                     <dt className="text-apps-muted text-xs uppercase tracking-wider">
-                      Platforms
+                      Web players
                     </dt>
-                    <dd className="font-display text-2xl mt-1">3</dd>
-                    <div className="text-apps-muted text-xs mt-1">
-                      iOS · Android · Web
-                    </div>
+                    <dd className="font-display text-2xl mt-1">500k+</dd>
+                  </div>
+                  <div>
+                    <dt className="text-apps-muted text-xs uppercase tracking-wider">
+                      Rating
+                    </dt>
+                    <dd className="font-display text-2xl mt-1">4.9★</dd>
+                  </div>
+                  <div>
+                    <dt className="text-apps-muted text-xs uppercase tracking-wider">
+                      App Store
+                    </dt>
+                    <dd className="font-display text-2xl mt-1">#27</dd>
                   </div>
                 </dl>
 
+                <p className="mt-6 text-apps-muted text-sm">
+                  3,000 new players a day · iOS · Android · Web
+                </p>
+
                 <div className="mt-8 flex flex-wrap gap-3">
-                  {/* TODO: replace placeholder URLs with real store listings */}
                   <a
                     href="https://geohuntergame.com"
                     target="_blank"
@@ -110,13 +123,17 @@ export default function AppsPage() {
                     Play on web
                   </a>
                   <a
-                    href="#"
+                    href="https://apps.apple.com/gb/app/geohunter/id6755425765"
+                    target="_blank"
+                    rel="noreferrer"
                     className="px-5 py-2.5 rounded-full border border-apps-text/15 text-apps-text text-sm font-display tracking-wide hover:bg-apps-text/[0.04] transition-colors"
                   >
                     App Store
                   </a>
                   <a
-                    href="#"
+                    href="https://play.google.com/store/apps/details?id=com.geohuntergame.mobile&hl=en_GB"
+                    target="_blank"
+                    rel="noreferrer"
                     className="px-5 py-2.5 rounded-full border border-apps-text/15 text-apps-text text-sm font-display tracking-wide hover:bg-apps-text/[0.04] transition-colors"
                   >
                     Play Store
@@ -127,40 +144,11 @@ export default function AppsPage() {
           </div>
         </section>
 
-        {/* ─────────── Future products ─────────── */}
+        {/* ─────────── Next-game waitlist ─────────── */}
         <section className="mx-auto max-w-[1200px] px-6 md:px-10 py-20 md:py-28">
           <ScrollReveal>
-            <p className="text-apps-muted text-xs tracking-[0.25em] uppercase mb-3">
-              Roadmap
-            </p>
-            <h2 className="font-display text-2xl md:text-3xl">
-              What we&rsquo;re building next
-            </h2>
+            <EmailCapture />
           </ScrollReveal>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            <ScrollReveal delay={0.05}>
-              <div className="rounded-2xl border border-dashed border-apps-text/15 p-8 h-48 flex items-center justify-center bg-apps-surface">
-                <span className="text-apps-muted text-sm">
-                  More coming soon
-                </span>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <div className="rounded-2xl border border-dashed border-apps-text/15 p-8 h-48 flex items-center justify-center bg-apps-surface">
-                <span className="text-apps-muted text-sm">
-                  More coming soon
-                </span>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.15}>
-              <div className="rounded-2xl border border-dashed border-apps-text/15 p-8 h-48 flex items-center justify-center bg-apps-surface">
-                <span className="text-apps-muted text-sm">
-                  More coming soon
-                </span>
-              </div>
-            </ScrollReveal>
-          </div>
         </section>
       </main>
 

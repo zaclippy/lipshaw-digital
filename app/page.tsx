@@ -3,15 +3,15 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 /* ──────────────────────────────────────────────────────────
-   Hero icons — hand-drawn line SVG, ~64px square.
+   Hero icons — hand-drawn line SVG, sized via `size` prop.
    No fills; stroke uses currentColor so we can tint via CSS.
    ────────────────────────────────────────────────────────── */
 
-function PhoneIcon() {
+function PhoneIcon({ size = 64 }: { size?: number }) {
   return (
     <svg
-      width="64"
-      height="64"
+      width={size}
+      height={size}
       viewBox="0 0 64 64"
       fill="none"
       stroke="currentColor"
@@ -27,11 +27,11 @@ function PhoneIcon() {
   );
 }
 
-function DesktopIcon() {
+function DesktopIcon({ size = 64 }: { size?: number }) {
   return (
     <svg
-      width="64"
-      height="64"
+      width={size}
+      height={size}
       viewBox="0 0 64 64"
       fill="none"
       stroke="currentColor"
@@ -47,11 +47,11 @@ function DesktopIcon() {
   );
 }
 
-function PersonIcon() {
+function PersonIcon({ size = 64 }: { size?: number }) {
   return (
     <svg
-      width="64"
-      height="64"
+      width={size}
+      height={size}
       viewBox="0 0 64 64"
       fill="none"
       stroke="currentColor"
@@ -77,8 +77,10 @@ type IconLinkProps = {
   accent: string;
   /** Verbose label for screen readers / aria-label */
   label: string;
-  /** Short visible caption that fades in on hover */
+  /** Short visible caption */
   caption: string;
+  /** Primary = large, persistently glowing, caption always shown */
+  primary?: boolean;
   children: React.ReactNode;
 };
 
@@ -88,27 +90,39 @@ function IconLink({
   accent,
   label,
   caption,
+  primary = false,
   children,
 }: IconLinkProps) {
-  const className =
-    "group relative inline-flex h-20 w-20 md:h-24 md:w-24 items-center justify-center text-cloud transition-transform duration-300 ease-out hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-cloud/70 rounded-full";
+  const sizeClass = primary
+    ? "h-28 w-28 md:h-36 md:w-36 text-cloud"
+    : "h-16 w-16 md:h-20 md:w-20 text-cloud/70 hover:text-cloud";
+
+  const className = `group relative inline-flex ${sizeClass} items-center justify-center transition-all duration-300 ease-out hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-cloud/70 rounded-full`;
 
   const inner = (
     <>
-      {/* Hover glow — radial gradient in the accent colour */}
+      {/* Glow — persistent for primary, hover-only for secondary */}
       <span
         aria-hidden
-        className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300"
+        className={`absolute inset-0 rounded-full transition-opacity duration-300 ${
+          primary
+            ? "opacity-60 group-hover:opacity-100"
+            : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
+        }`}
         style={{
           background: `radial-gradient(closest-side, ${accent}55, transparent 75%)`,
         }}
       />
       <span className="relative">{children}</span>
 
-      {/* Hover caption — small letterspaced label below the icon */}
+      {/* Caption — always shown for primary, fades in on hover for secondary */}
       <span
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-full mt-3 -translate-x-1/2 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 transition-all duration-300 ease-out font-body text-[10px] md:text-xs uppercase tracking-[0.25em] text-cloud/85 whitespace-nowrap"
+        className={`pointer-events-none absolute left-1/2 top-full -translate-x-1/2 font-body uppercase tracking-[0.25em] text-cloud/85 whitespace-nowrap transition-all duration-300 ease-out ${
+          primary
+            ? "mt-4 opacity-100 text-xs md:text-sm"
+            : "mt-3 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 text-[10px] md:text-xs"
+        }`}
       >
         {caption}
       </span>
@@ -172,43 +186,53 @@ export default function Home() {
         />
 
         <div className="relative z-10 flex flex-col items-center px-6 text-center">
-          <h1
-            className="font-display font-bold leading-none tracking-tight text-cloud"
-            style={{ fontSize: "clamp(72px, 11vw, 112px)" }}
-          >
-            LD
-          </h1>
-          <p className="mt-5 font-body text-xs md:text-sm uppercase tracking-[0.3em] text-cloud/75">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="Lipshaw Digital"
+            className="h-24 md:h-32 w-auto select-none"
+            style={{
+              filter: "brightness(0) invert(1) drop-shadow(0 2px 12px rgba(0,0,0,0.15))",
+            }}
+          />
+          <p className="mt-6 font-body text-xs md:text-sm uppercase tracking-[0.3em] text-cloud/75">
             Lipshaw Digital
           </p>
+          <p className="mt-3 font-body text-sm md:text-base text-cloud/80">
+            A product studio. We build apps &amp; games.
+          </p>
 
+          {/* Apps central, secondary paths flanking it */}
           <nav
             aria-label="Primary"
-            className="mt-14 md:mt-20 flex items-center justify-center gap-6 md:gap-12"
+            className="mt-14 md:mt-16 flex items-center justify-center gap-10 md:gap-16"
           >
-            <IconLink
-              href="/apps"
-              accent="#3B6B8A"
-              label="LD Apps"
-              caption="Apps"
-            >
-              <PhoneIcon />
-            </IconLink>
             <IconLink
               href="/newbold"
               accent="#5A7C5A"
               label="Newbold Web Studio"
               caption="Websites"
             >
-              <DesktopIcon />
+              <DesktopIcon size={44} />
             </IconLink>
+
+            <IconLink
+              href="/apps"
+              accent="#3B6B8A"
+              label="LD Apps"
+              caption="Apps"
+              primary
+            >
+              <PhoneIcon size={84} />
+            </IconLink>
+
             <IconLink
               href="/zac"
               accent="#A07A4F"
               label="Zac — about"
               caption="Zac"
             >
-              <PersonIcon />
+              <PersonIcon size={44} />
             </IconLink>
           </nav>
         </div>

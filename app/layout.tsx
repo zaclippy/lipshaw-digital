@@ -17,21 +17,28 @@ const body = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lipshaw.digital"),
+  metadataBase: new URL("https://ldapps.site"),
   title: {
     default: "Lipshaw Digital",
     template: "%s · Lipshaw Digital",
   },
   description:
-    "Lipshaw Digital — apps, websites, and digital craft. UK-based.",
+    "Lipshaw Digital is a UK product studio building consumer apps and games — including GeoHunter — alongside select client websites through Newbold Web Studio.",
   openGraph: {
     title: "Lipshaw Digital",
     description:
-      "Lipshaw Digital — apps, websites, and digital craft. UK-based.",
-    url: "https://lipshaw.digital",
+      "A UK product studio building consumer apps and games, including GeoHunter. Websites via Newbold Web Studio.",
+    url: "https://ldapps.site",
     siteName: "Lipshaw Digital",
     locale: "en_GB",
     type: "website",
+    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "Lipshaw Digital" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lipshaw Digital",
+    description:
+      "A UK product studio building consumer apps and games, including GeoHunter.",
   },
 };
 

@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { FORMSPREE_ENDPOINT } from "@/lib/formspree";
 
 type Variant = "light" | "dark";
 
@@ -16,7 +17,7 @@ type Props = {
   emailSubject: string;
 };
 
-const CONTACT_EMAIL = "hello@lipshaw.digital";
+const CONTACT_EMAIL = "zac@ldapps.site";
 
 const palettes: Record<
   Variant,
@@ -61,7 +62,10 @@ export default function PromptModal({
   emailSubject,
 }: Props) {
   const [value, setValue] = useState("");
+  const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const p = palettes[variant];
 
   // Close on ESC
@@ -85,20 +89,37 @@ export default function PromptModal({
     if (open) {
       setSubmitted(false);
       setValue("");
+      setEmail("");
+      setError(null);
+      setSending(false);
     }
   }, [open]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = value.trim();
-    if (!trimmed) return;
-    // Open the user's mail client with a prefilled message to hello@lipshaw.digital.
-    // Server-side form handling can replace this later.
-    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      emailSubject
-    )}&body=${encodeURIComponent(trimmed)}`;
-    window.location.href = mailto;
-    setSubmitted(true);
+    if (!trimmed || sending) return;
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          message: trimmed,
+          email: email.trim() || undefined,
+          _subject: emailSubject,
+        }),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setSubmitted(true);
+    } catch {
+      setError(
+        `Something went wrong. Please email ${CONTACT_EMAIL} directly.`
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -158,9 +179,9 @@ export default function PromptModal({
 
             {submitted ? (
               <div className={`py-6 ${p.text}`}>
-                <p className="font-display text-lg mb-2">Thanks.</p>
+                <p className="font-display text-lg mb-2">Thanks — message sent.</p>
                 <p className={`text-sm ${p.muted}`}>
-                  Your mail app should have opened. If not, write to{" "}
+                  We&rsquo;ll get back to you soon. You can also reach us at{" "}
                   <a
                     className="underline underline-offset-4"
                     href={`mailto:${CONTACT_EMAIL}`}
@@ -180,13 +201,23 @@ export default function PromptModal({
                   autoFocus
                   className={`w-full resize-none rounded-lg border px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-current/20 ${p.field}`}
                 />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email (so we can reply)"
+                  className={`w-full rounded-lg border px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-current/20 ${p.field}`}
+                />
+                {error && (
+                  <p className="text-sm text-red-500">{error}</p>
+                )}
                 <div className="flex justify-end">
                   <button
                     type="submit"
-                    disabled={!value.trim()}
+                    disabled={!value.trim() || sending}
                     className={`px-5 py-2.5 rounded-lg font-display text-sm tracking-wide ${p.button} ${p.buttonText} disabled:opacity-40 disabled:cursor-not-allowed transition-opacity`}
                   >
-                    {submitLabel}
+                    {sending ? "Sending…" : submitLabel}
                   </button>
                 </div>
               </form>

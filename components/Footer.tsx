@@ -45,7 +45,7 @@ export default function Footer({ variant = "light" }: { variant?: Variant }) {
             Newbold
           </Link>
           <a
-            href="mailto:hello@lipshaw.digital"
+            href="mailto:zac@ldapps.site"
             className="hover:underline underline-offset-4"
           >
             Contact
@@ -54,10 +54,10 @@ export default function Footer({ variant = "light" }: { variant?: Variant }) {
 
         <div className={`text-sm md:text-right ${p.muted}`}>
           <a
-            href="mailto:hello@lipshaw.digital"
+            href="mailto:zac@ldapps.site"
             className="hover:underline underline-offset-4"
           >
-            hello@lipshaw.digital
+            zac@ldapps.site
           </a>
           <div className="text-xs mt-1">© {year}</div>
         </div>
