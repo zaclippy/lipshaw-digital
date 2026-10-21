@@ -3,7 +3,6 @@ import GameCollection from "@/components/portfolio/GameCollection";
 import {
   SiteHeader,
   SiteFooter,
-  WorkTogether,
   AtlasMark,
 } from "@/components/portfolio/SiteShell";
 
@@ -44,7 +43,6 @@ export default function GamesPage() {
         <section className="ld-wrap" aria-label="Daily games">
           <GameCollection />
         </section>
-        <WorkTogether />
       </main>
       <SiteFooter />
     </div>

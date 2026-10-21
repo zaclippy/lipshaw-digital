@@ -16,10 +16,7 @@ import {
 const MAP_WIDTH = 960;
 const MAP_HEIGHT = 500;
 
-type CountryFeature = Feature<
-  Geometry,
-  { name: string }
->;
+type CountryFeature = Feature<Geometry, { name: string }>;
 
 /**
  * Lightweight world map in SVG. Uses a Natural Earth 1 projection fitted to
@@ -44,11 +41,11 @@ export default function TravelMap() {
         if (cancelled) return;
         const collection = feature(
           topo,
-          topo.objects.countries
+          topo.objects.countries,
         ) as unknown as FeatureCollection<Geometry, { name: string }>;
         // Filter out Antarctica so the map crops nicely.
         const filtered = collection.features.filter(
-          (f) => f.properties.name !== "Antarctica"
+          (f) => f.properties.name !== "Antarctica",
         );
         setCountries(filtered);
       })
@@ -74,7 +71,7 @@ export default function TravelMap() {
           [16, 16],
           [MAP_WIDTH - 16, MAP_HEIGHT - 16],
         ],
-        fc
+        fc,
       );
     }
     const path = geoPath(proj);
@@ -89,7 +86,9 @@ export default function TravelMap() {
         const p = projection([city.longitude, city.latitude]);
         return p ? { city, x: p[0], y: p[1] } : null;
       })
-      .filter((x): x is { city: VisitedCity; x: number; y: number } => x !== null);
+      .filter(
+        (x): x is { city: VisitedCity; x: number; y: number } => x !== null,
+      );
   }, [countries, projection]);
 
   return (
@@ -100,7 +99,7 @@ export default function TravelMap() {
       <svg
         viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
         className="block h-auto w-full"
-        role="img"
+        role="group"
         aria-label="World map showing places Zac has visited"
       >
         {/* Subtle ocean wash */}
@@ -126,8 +125,8 @@ export default function TravelMap() {
                 fill={
                   visited
                     ? isHover
-                      ? "#8fb07f"
-                      : "#6B8F5E"
+                      ? "#bca8e4"
+                      : "#9883c8"
                     : isHover
                       ? "rgba(244,246,242,0.10)"
                       : "rgba(244,246,242,0.06)"
@@ -148,12 +147,22 @@ export default function TravelMap() {
         <g>
           {cityPoints.map(({ city, x, y }) => {
             const isSelected =
-              selected?.name === city.name && selected?.country === city.country;
+              selected?.name === city.name &&
+              selected?.country === city.country;
             return (
               <g
                 key={`${city.name}-${city.country}`}
                 transform={`translate(${x}, ${y})`}
                 className="cursor-pointer"
+                role="button"
+                tabIndex={0}
+                aria-label={`${city.name}, ${city.country}`}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setSelected(city);
+                  }
+                }}
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelected(city);
@@ -171,7 +180,7 @@ export default function TravelMap() {
                 )}
                 <circle
                   r={isSelected ? 5 : 3.5}
-                  fill="#A07A4F"
+                  fill="#e8b5a5"
                   stroke="#F4F6F2"
                   strokeWidth={1.2}
                   style={{ transition: "r 0.2s ease" }}
@@ -191,7 +200,7 @@ export default function TravelMap() {
           <span
             aria-hidden
             className="inline-block h-2.5 w-3.5 rounded-[2px]"
-            style={{ background: "#6B8F5E" }}
+            style={{ background: "#9883c8" }}
           />
           Countries visited
         </div>
@@ -199,7 +208,7 @@ export default function TravelMap() {
           <span
             aria-hidden
             className="inline-block h-2.5 w-2.5 rounded-full border border-cloud"
-            style={{ background: "#A07A4F" }}
+            style={{ background: "#e8b5a5" }}
           />
           Places
         </div>

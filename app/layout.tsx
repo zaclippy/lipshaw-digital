@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s · Lipshaw Digital",
   },
   description:
-    "Zac Lipshaw designs and builds daily games, websites and useful tools. Explore LDGames or work together on a project, collaboration or frontend / full-stack contract.",
+    "Zac Lipshaw designs and builds daily games, websites and useful tools. Explore LDGames or work together on a game, website or software project.",
   openGraph: {
     title: "Lipshaw Digital",
     description:
@@ -32,7 +32,9 @@ export const metadata: Metadata = {
     siteName: "Lipshaw Digital",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "Lipshaw Digital" }],
+    images: [
+      { url: "/logo.png", width: 1200, height: 630, alt: "Lipshaw Digital" },
+    ],
   },
   twitter: {
     card: "summary_large_image",

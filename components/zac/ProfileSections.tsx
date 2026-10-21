@@ -3,7 +3,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { GeoHunterMiniDemo } from "@/components/mini-demo/GeoHunterMiniDemo";
-import { CollapsibleRow, LinkRow } from "./rows";
+import { CollapsibleRow } from "./rows";
 
 /**
  * Lazy-load the world map only when the Travel Map row is opened.
@@ -81,8 +81,7 @@ const roles: Role[] = [
     org: "Lipshaw Digital",
     meta: "Oct 2025 – Present · Royal Leamington Spa, UK",
     points: [
-      "Building apps and websites for global clients.",
-      "Built and launched the GeoHunter geography game with Expo and React.",
+      "Independent games and client websites.",
       "Developed 2 client websites end-to-end, from brief to deployment (React).",
       "Monetisation, App Store / Google Play publishing, hosting and SEO across all products.",
     ],
@@ -92,9 +91,8 @@ const roles: Role[] = [
     org: "GeoHunter",
     meta: "Aug 2025 – Present",
     points: [
-      "100,000 downloads, 500k+ web players, and 3,000 new users a day.",
-      "Reached #27 on the App Store for Trivia.",
-      "4.9★ rating with 700 monthly subscribers.",
+      "Designed and built GeoHunter for web, iOS and Android with React and Expo.",
+      "Game design, development, store releases, subscriptions and ongoing updates.",
     ],
   },
   {
@@ -116,7 +114,7 @@ function ExperienceTimeline() {
         Experience
       </h2>
       <div className="mt-8 flex flex-col gap-10 md:gap-12">
-        {roles.map((role) => (
+        {[roles[1], roles[2], roles[0]].map((role) => (
           <div
             key={`${role.org}-${role.title}`}
             className="border-l border-cloud/20 pl-6 md:pl-8"
@@ -164,17 +162,17 @@ type ExperienceLink = {
 const experienceLinks: ExperienceLink[] = [
   {
     label: "LinkedIn",
-    sub: "Roles, projects, and the longer story",
+    sub: "Experience and projects",
     href: "https://www.linkedin.com/in/zaclipshaw",
   },
   {
     label: "GitHub",
-    sub: "Code, repos, and side projects",
+    sub: "Code and projects",
     href: "https://github.com/zaclippy",
   },
   {
     label: "University Dissertation",
-    sub: "NLP for cancer diagnosis — BSc final project portfolio",
+    sub: "NLP for cancer diagnosis — BSc final project",
     href: "https://zaclippy.github.io/nlp-cancer-diagnosis-portfolio/index.html",
   },
 ];

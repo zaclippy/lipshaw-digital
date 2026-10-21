@@ -9,12 +9,11 @@ import {
 export const metadata: Metadata = {
   title: "Work with Zac",
   description:
-    "Games, websites and useful tools, designed and built by Zac Lipshaw. Small-business projects, product collaborations and short frontend or full-stack contracts.",
+    "Games, websites and useful tools, designed and built by Zac Lipshaw. Websites, business tools and full-stack development.",
   alternates: { canonical: "https://ldapps.site/services" },
   openGraph: {
     title: "Work with Zac",
-    description:
-      "Games, websites, business tools and frontend / full-stack contracts.",
+    description: "Games, websites, business tools and full-stack development.",
     url: "https://ldapps.site/services",
   },
 };
@@ -29,9 +28,6 @@ export default function ServicesPage() {
       <main id="main">
         <section className="ld-page-intro ld-wrap">
           <div>
-            <span className="ld-availability">
-              <span /> Projects, contracts & collaborations
-            </span>
             <h1>Work with me.</h1>
             <p>
               I design and build games, websites and tools for small businesses.
@@ -58,8 +54,8 @@ export default function ServicesPage() {
               text: "Game development, product design and prototypes.",
             },
             {
-              title: "Contract work",
-              text: "Frontend and full-stack development. Open to 3-month contracts.",
+              title: "Development",
+              text: "Frontend and full-stack development.",
             },
           ].map((item) => (
             <article key={item.title}>
