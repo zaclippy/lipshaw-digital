@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="ld-site">
+    <div className="ld-site ld-home">
       <a className="ld-skip" href="#main">
         Skip to content
       </a>

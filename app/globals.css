@@ -1573,3 +1573,57 @@ html:has(.ld-demo-dialog[open]) {
     display: none;
   }
 }
+
+/* Compact the homepage around the existing game cards. */
+.ld-home .ld-hero {
+  padding-block: 24px 36px;
+}
+.ld-home .ld-hero-bottom {
+  margin-top: 20px;
+}
+.ld-home .ld-hero-stamp {
+  top: 8px;
+  width: 180px;
+}
+.ld-home .ld-section-heading {
+  margin-bottom: 20px;
+}
+.ld-home .ld-home-work {
+  padding-top: 36px;
+}
+.ld-home .ld-home-work > div {
+  margin-top: 12px;
+}
+.ld-home .ld-footer {
+  margin-top: 40px;
+}
+@media (min-width: 801px) {
+  .ld-home .ld-header {
+    min-height: 88px;
+  }
+}
+@media (max-width: 800px) {
+  .ld-home .ld-hero-stamp {
+    width: 110px;
+  }
+  .ld-home .ld-hero-bottom .ld-text-link {
+    margin-top: 12px;
+  }
+}
+@media (max-width: 580px) {
+  .ld-home .ld-hero {
+    padding-block: 24px 28px;
+  }
+  .ld-home .ld-hero-stamp {
+    width: 74px;
+  }
+  .ld-home .ld-section-heading > p {
+    margin-top: 8px;
+  }
+  .ld-home .ld-home-work {
+    padding-top: 28px;
+  }
+  .ld-home .ld-footer {
+    margin-top: 32px;
+  }
+}
