@@ -27,7 +27,7 @@ export const games = [
     id: "eight-stops",
     name: "Eight Stops",
     description: "Daily London Underground game.",
-    href: "https://eightstops.vercel.app",
+    href: "https://eight-stops.pages.dev",
     theme: "stops",
     category: "London Underground",
   },
