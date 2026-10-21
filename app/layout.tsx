@@ -23,11 +23,11 @@ export const metadata: Metadata = {
     template: "%s · Lipshaw Digital",
   },
   description:
-    "Lipshaw Digital is a UK product studio building consumer apps and games — including GeoHunter — alongside select client websites through Newbold Web Studio.",
+    "Zac Lipshaw designs and builds daily games, websites and useful tools. Explore LDGames or work together on a project, collaboration or frontend / full-stack contract.",
   openGraph: {
     title: "Lipshaw Digital",
     description:
-      "A UK product studio building consumer apps and games, including GeoHunter. Websites via Newbold Web Studio.",
+      "Daily games, websites and useful tools, designed and built by Zac Lipshaw.",
     url: "https://ldapps.site",
     siteName: "Lipshaw Digital",
     locale: "en_GB",
@@ -38,8 +38,32 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lipshaw Digital",
     description:
-      "A UK product studio building consumer apps and games, including GeoHunter.",
+      "Daily games, websites and useful tools, designed and built by Zac Lipshaw.",
   },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: "Lipshaw Digital",
+      alternateName: "LD",
+      url: "https://ldapps.site/",
+    },
+    {
+      "@type": "Organization",
+      name: "Lipshaw Digital",
+      legalName: "Lipshaw Digital Ltd",
+      alternateName: "LD",
+      identifier: {
+        "@type": "PropertyValue",
+        propertyID: "Companies House",
+        value: "16758000",
+      },
+      url: "https://ldapps.site/",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -49,7 +73,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body className="min-h-dvh">{children}</body>
+      <body className="min-h-dvh">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

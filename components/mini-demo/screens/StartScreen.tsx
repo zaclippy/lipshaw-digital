@@ -10,7 +10,7 @@ export function StartScreen() {
     <div className="ghmd-start">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="logo" src="/geohunter-logo.webp" alt="GeoHunter" />
-      <h1 className="title">GeoHunter</h1>
+      <h4 className="title">GeoHunter</h4>
       <div className="badge">CLASSIC · EASY MODE</div>
       <p className="tagline">Pick the right category for each country.<br/>Lower score wins.</p>
 

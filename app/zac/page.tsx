@@ -1,73 +1,130 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ProfileSections from "@/components/zac/ProfileSections";
+import Link from "next/link";
+import {
+  Arrow,
+  AtlasMark,
+  SiteHeader,
+  SiteFooter,
+  WorkTogether,
+} from "@/components/portfolio/SiteShell";
+import AboutExtras from "@/components/portfolio/AboutExtras";
 
 export const metadata: Metadata = {
   title: "Zac Lipshaw",
   description:
-    "Zac Lipshaw — Full Stack Developer, BSc Computer Science. Founder of LD Ltd, creator of GeoHunter (100k+ downloads), and NVIDIA Omniverse / digital-twin developer at JLR (showcased at NVIDIA GTC 2025).",
+    "Zac Lipshaw — Full Stack Developer, BSc Computer Science. Founder of Lipshaw Digital, creator of GeoHunter (100k+ downloads), and NVIDIA Omniverse / digital-twin developer at JLR (showcased at NVIDIA GTC 2025).",
+  alternates: {
+    canonical: "https://ldapps.site/zac",
+  },
   openGraph: {
     title: "Zac Lipshaw · Lipshaw Digital",
     description:
-      "Founder of LD Ltd, creator of GeoHunter, and NVIDIA Omniverse digital-twin developer at JLR (NVIDIA GTC 2025).",
+      "Founder of Lipshaw Digital, creator of GeoHunter, and NVIDIA Omniverse digital-twin developer at JLR (NVIDIA GTC 2025).",
+    siteName: "Lipshaw Digital",
     url: "https://ldapps.site/zac",
     type: "profile",
-    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "Zac Lipshaw" }],
+    images: [
+      { url: "/logo.png", width: 1200, height: 630, alt: "Zac Lipshaw" },
+    ],
   },
 };
 
 export default function ZacPage() {
   return (
-    <>
-      <Header
-        variant="home"
-        brand={{ label: "LD" }}
-        links={[
-          { href: "/apps", label: "Apps" },
-          { href: "/newbold", label: "Websites" },
-        ]}
-      />
-
-      <main
-        className="grain relative min-h-dvh overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(180deg, #4A3F35 0%, #3a322b 55%, #2c2620 100%)",
-        }}
-      >
-        {/* Soft top glow echoing the homepage horizon */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-96"
-          style={{
-            background:
-              "radial-gradient(60% 80% at 50% 0%, rgba(160,122,79,0.18), transparent 70%)",
-          }}
-        />
-
-        <div className="relative z-10 mx-auto max-w-[760px] px-6 pt-32 pb-20 md:pt-40 md:pb-28">
-          <header>
-            <h1
-              className="font-display font-bold leading-[0.95] tracking-tight text-cloud"
-              style={{ fontSize: "clamp(44px, 7vw, 72px)" }}
-            >
-              Zac Lipshaw
-            </h1>
-            <p className="mt-4 font-body text-xs md:text-sm uppercase tracking-[0.28em] text-cloud/70">
-              Full Stack Developer · BSc Computer Science
+    <div className="ld-site">
+      <a className="ld-skip" href="#main">
+        Skip to content
+      </a>
+      <SiteHeader active="about" />
+      <main id="main">
+        <section className="ld-page-intro ld-wrap">
+          <div className="ld-about-copy">
+            <span className="ld-availability">
+              <span /> Full-stack developer
+            </span>
+            <h1>Zac Lipshaw.</h1>
+            <p>
+              I built GeoHunter, GeoHigherOrLower, Eight Votes and Eight Stops.
+              Previously, I worked on digital twins and computer vision at JLR.
             </p>
-            <p className="mt-6 max-w-xl font-body text-base md:text-lg leading-relaxed text-cloud/85">
-              I build web and mobile apps, work with AI/LLMs, and create
-              digital twin extensions.
+            <div className="ld-about-links">
+              <a
+                className="ld-text-link"
+                href="https://www.linkedin.com/in/zaclipshaw"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn <Arrow diagonal />
+              </a>
+              <a
+                className="ld-text-link"
+                href="https://github.com/zaclippy"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub <Arrow diagonal />
+              </a>
+            </div>
+          </div>
+          <AtlasMark />
+        </section>
+        <section
+          className="ld-about-detail ld-wrap"
+          aria-labelledby="experience-heading"
+        >
+          <h2 id="experience-heading">Experience.</h2>
+          <article className="ld-experience">
+            <div>
+              <h3>Lipshaw Digital</h3>
+              <small>Founder & developer · 2025–present</small>
+            </div>
+            <div>
+              <p>
+                Designed, built and launched GeoHunter across web, iOS and
+                Android. Now building LDGames: four daily games spanning
+                geography, geopolitics and the London Underground.
+              </p>
+              <Link className="ld-text-link" href="/games">
+                Explore the games <Arrow diagonal />
+              </Link>
+            </div>
+          </article>
+          <article className="ld-experience">
+            <div>
+              <h3>JLR</h3>
+              <small>Digital Innovation Graduate · 2024–2026</small>
+            </div>
+            <p>
+              Built Python extensions for manufacturing digital twins in NVIDIA
+              Omniverse, with work showcased at NVIDIA GTC 2025. Also worked on
+              computer vision for automated vehicle inspection.
             </p>
-          </header>
-
-          <ProfileSections />
-        </div>
+          </article>
+          <article className="ld-experience">
+            <div>
+              <h3>Computer Science</h3>
+              <small>BSc · Natural language processing</small>
+            </div>
+            <div>
+              <p>
+                Explored natural language processing for cancer diagnosis in my
+                final-year project.
+              </p>
+              <a
+                className="ld-text-link"
+                href="https://zaclippy.github.io/nlp-cancer-diagnosis-portfolio/index.html"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View the project <Arrow diagonal />
+              </a>
+            </div>
+          </article>
+          <AboutExtras />
+        </section>
+        <WorkTogether />
       </main>
-
-      <Footer variant="dark" />
-    </>
+      <SiteFooter />
+    </div>
   );
 }

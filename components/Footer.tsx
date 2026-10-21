@@ -28,10 +28,11 @@ export default function Footer({ variant = "light" }: { variant?: Variant }) {
     <footer className={`${p.bg} ${p.text} border-t ${p.border}`}>
       <div className="mx-auto max-w-[1200px] px-6 md:px-10 py-10 grid gap-6 md:grid-cols-3 md:items-center">
         <div className="font-display font-bold tracking-tight">
-          Lipshaw Digital Ltd
-          <div className={`text-xs font-body font-normal mt-1 ${p.muted}`}>
-            Registered in England &amp; Wales
-          </div>
+          <span className={`text-xs font-body font-normal leading-relaxed ${p.muted}`}>
+            Lipshaw Digital Ltd · Registered in England and Wales · Company no.
+            16758000 · Registered office: 1b Portland Street, Leamington Spa,
+            CV32 5EZ, United Kingdom.
+          </span>
         </div>
 
         <nav

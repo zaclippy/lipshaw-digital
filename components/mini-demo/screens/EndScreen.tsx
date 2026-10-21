@@ -7,9 +7,8 @@ import { calculateScore } from '../lib/scoring'
 // huge gradient score number, tier badge, primary CTA + store badges.
 
 const WEB_URL = 'https://geohuntergame.com'
-// TODO: replace with real store URLs when available
-const IOS_URL = 'https://apps.apple.com/app/geohunter/id0000000000'
-const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.geohunter.app'
+const IOS_URL = 'https://apps.apple.com/gb/app/geohunter/id6755425765'
+const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.geohuntergame.mobile&hl=en_GB'
 
 interface Tier {
   label: string

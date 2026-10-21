@@ -78,7 +78,7 @@ type Role = {
 const roles: Role[] = [
   {
     title: "Founder",
-    org: "LD Ltd",
+    org: "Lipshaw Digital",
     meta: "Oct 2025 – Present · Royal Leamington Spa, UK",
     points: [
       "Building apps and websites for global clients.",
