@@ -28,11 +28,11 @@ export default function ProfileSections() {
     setOpen((cur) => (cur === id ? null : id));
 
   return (
-    <div className="mt-12 md:mt-16">
+    <div>
       {/* Visible credibility content — the CV, front and centre. */}
       <ExperienceTimeline />
 
-      <div className="mt-14 md:mt-20">
+      <div className="mt-10 md:mt-12">
         <CollapsibleRow
           label="GeoHunter Demo"
           isOpen={open === "geohunter"}
@@ -115,7 +115,7 @@ function ExperienceTimeline() {
       <h2 className="font-body text-xs uppercase tracking-[0.28em] text-cloud/60">
         Experience
       </h2>
-      <div className="mt-8 flex flex-col gap-10 md:gap-12">
+      <div className="mt-6 flex flex-col gap-8">
         {[roles[1], roles[2], roles[0]].map((role) => (
           <div
             key={`${role.org}-${role.title}`}
@@ -132,7 +132,7 @@ function ExperienceTimeline() {
             <p className="mt-1 font-body text-xs md:text-sm text-cloud/55">
               {role.meta}
             </p>
-            <ul className="mt-4 flex flex-col gap-2">
+            <ul className="mt-3 flex flex-col gap-1.5">
               {role.points.map((point, i) => (
                 <li
                   key={i}
