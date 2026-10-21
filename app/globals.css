@@ -1516,48 +1516,6 @@ html:has(.ld-demo-dialog[open]) {
 .ld-profile .ld-page-intro p {
   max-width: 550px;
 }
-.ld-profile-game {
-  border-block: 1px solid #ffffff26;
-  padding-block: 30px 35px;
-}
-.ld-profile-game-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-}
-.ld-profile-game h2 {
-  font-family: var(--font-display), sans-serif;
-  font-size: 32px;
-  letter-spacing: -1px;
-}
-.ld-profile-game p {
-  color: var(--ld-muted);
-  font-size: 13px;
-  line-height: 1.7;
-  margin-top: 8px;
-}
-.ld-geohunter-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px 45px;
-  margin-top: 30px;
-}
-.ld-geohunter-stats > div {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 5px;
-}
-.ld-geohunter-stats dt {
-  color: var(--ld-muted);
-  font-size: 11px;
-}
-.ld-geohunter-stats dd {
-  font-family: var(--font-display), sans-serif;
-  font-size: 32px;
-  color: var(--ld-ink);
-  letter-spacing: -1px;
-}
 .ld-about-site [role="button"]:focus-visible {
   outline: 2px solid #c2b0eb;
   outline-offset: 4px;
@@ -1584,21 +1542,6 @@ html:has(.ld-demo-dialog[open]) {
   .ld-profile .ld-page-intro > .ld-interactive-globe {
     width: 58px;
     top: 8px;
-  }
-  .ld-geohunter-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 23px;
-  }
-  .ld-geohunter-stats dd {
-    font-size: 29px;
-  }
-  .ld-profile-game-heading {
-    align-items: start;
-    gap: 18px;
-  }
-  .ld-profile-game p {
-    font-size: 12px;
-    max-width: 240px;
   }
 }
 @media (max-width: 360px) {

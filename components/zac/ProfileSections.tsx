@@ -92,7 +92,9 @@ const roles: Role[] = [
     meta: "Aug 2025 – Present",
     points: [
       "Designed and built GeoHunter for web, iOS and Android with React and Expo.",
-      "Game design, development, store releases, subscriptions and ongoing updates.",
+      "150,000 downloads, 1M+ web players and 3,000 new players a day.",
+      "Reached #27 in App Store Trivia, with a 4.9★ rating.",
+      "700 monthly subscribers.",
     ],
   },
   {

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import {
-  Arrow,
   AtlasMark,
   SiteHeader,
   SiteFooter,
 } from "@/components/portfolio/SiteShell";
-import GeoHunterStats from "@/components/portfolio/GeoHunterStats";
 import ProfileSections from "@/components/zac/ProfileSections";
 
 export const metadata: Metadata = {
@@ -46,26 +44,6 @@ export default function ZacPage() {
             </p>
           </div>
           <AtlasMark />
-        </section>
-        <section
-          className="ld-profile-game"
-          aria-labelledby="geohunter-heading"
-        >
-          <div className="ld-profile-game-heading">
-            <div>
-              <h2 id="geohunter-heading">GeoHunter</h2>
-              <p>A geography game I designed, built and launched.</p>
-            </div>
-            <a
-              className="ld-text-link"
-              href="https://geohuntergame.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Play <Arrow diagonal />
-            </a>
-          </div>
-          <GeoHunterStats />
         </section>
         <ProfileSections />
       </main>
